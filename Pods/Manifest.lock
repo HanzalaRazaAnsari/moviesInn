@@ -1,0 +1,28 @@
+PODS:
+  - Alamofire (5.6.4)
+  - Kingfisher (7.6.2)
+  - SVProgressHUD (2.2.5)
+  - Toast-Swift (5.0.1)
+
+DEPENDENCIES:
+  - Alamofire
+  - Kingfisher
+  - SVProgressHUD
+  - Toast-Swift
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - Kingfisher
+    - SVProgressHUD
+    - Toast-Swift
+
+SPEC CHECKSUMS:
+  Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
+  Kingfisher: 6c5449c6450c5239166510ba04afe374a98afc4f
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
+
+PODFILE CHECKSUM: a0e0dfff7c1bdc4a9bc03ab8648fab75c6291461
+
+COCOAPODS: 1.11.3
