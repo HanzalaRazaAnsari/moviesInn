@@ -36,6 +36,7 @@ import ObjectiveC
  The `showToast` methods display any view as toast.
  
  */
+@available(iOS 13.0, *)
 public extension UIView {
     
     /**
@@ -308,6 +309,7 @@ public extension UIView {
         })
     }
     
+    @available(iOS 13.0, *)
     private func createToastActivityView() -> UIView {
         let style = ToastManager.shared.style
         
@@ -323,7 +325,7 @@ public extension UIView {
             activityView.layer.shadowOffset = style.shadowOffset
         }
         
-        let activityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
+        let activityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
         activityIndicatorView.center = CGPoint(x: activityView.bounds.size.width / 2.0, y: activityView.bounds.size.height / 2.0)
         activityView.addSubview(activityIndicatorView)
         activityIndicatorView.color = style.activityIndicatorColor

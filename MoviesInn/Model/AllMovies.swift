@@ -9,7 +9,7 @@ import Foundation
 
 public class AllMovies: Codable {
     public var page: Int?
-    public var results: [Result]?
+    public var results: [ResultClass]?
     public var totalPages: Int?
     public var totalResults: Int?
 
@@ -20,7 +20,7 @@ public class AllMovies: Codable {
         case totalResults
     }
 
-    public init(page: Int?, results: [Result]?, totalPages: Int?, totalResults: Int?) {
+    public init(page: Int?, results: [ResultClass]?, totalPages: Int?, totalResults: Int?) {
         self.page = page
         self.results = results
         self.totalPages = totalPages
@@ -29,7 +29,7 @@ public class AllMovies: Codable {
 }
 
 // MARK: - Result
-public class Result: Codable {
+public class ResultClass: Codable {
     public var adult: Bool?
     public var backdropPath: String?
     public var genreIDS: [Int]?
