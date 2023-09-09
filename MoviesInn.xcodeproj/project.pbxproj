@@ -17,7 +17,7 @@
 		32E2425D2AAC6F7A00EB4AAF /* SpecificMovieDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E2425C2AAC6F7A00EB4AAF /* SpecificMovieDataProvider.swift */; };
 		32E2425F2AAC712A00EB4AAF /* SpecificMovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E2425E2AAC712A00EB4AAF /* SpecificMovieViewModel.swift */; };
 		32E242612AAC717100EB4AAF /* SpecificMovieViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E242602AAC717100EB4AAF /* SpecificMovieViewModelProtocol.swift */; };
-		32E242632AACA15700EB4AAF /* MovieListTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E242622AACA15600EB4AAF /* MovieListTestCases.swift */; };
+		32E242632AACA15700EB4AAF /* MovieInnTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E242622AACA15600EB4AAF /* MovieInnTestCases.swift */; };
 		68290FA40AA658B90C856517 /* Pods_MoviesInn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6488D5A662124977DEB4A56E /* Pods_MoviesInn.framework */; };
 		841E7F0E2AA991D800AA01F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E7F0D2AA991D800AA01F2 /* AppDelegate.swift */; };
 		841E7F102AA991D800AA01F2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E7F0F2AA991D800AA01F2 /* SceneDelegate.swift */; };
@@ -79,7 +79,7 @@
 		32E2425C2AAC6F7A00EB4AAF /* SpecificMovieDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificMovieDataProvider.swift; sourceTree = "<group>"; };
 		32E2425E2AAC712A00EB4AAF /* SpecificMovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificMovieViewModel.swift; sourceTree = "<group>"; };
 		32E242602AAC717100EB4AAF /* SpecificMovieViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificMovieViewModelProtocol.swift; sourceTree = "<group>"; };
-		32E242622AACA15600EB4AAF /* MovieListTestCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListTestCases.swift; sourceTree = "<group>"; };
+		32E242622AACA15600EB4AAF /* MovieInnTestCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInnTestCases.swift; sourceTree = "<group>"; };
 		6488D5A662124977DEB4A56E /* Pods_MoviesInn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoviesInn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		79AA9849A13DFD8213BEBEBB /* Pods_MoviesInn_MoviesInnUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoviesInn_MoviesInnUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80EAE7F0358480F4D11AD624 /* Pods-MoviesInn-MoviesInnUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesInn-MoviesInnUITests.release.xcconfig"; path = "Target Support Files/Pods-MoviesInn-MoviesInnUITests/Pods-MoviesInn-MoviesInnUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -228,7 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				841E7F272AA991DA00AA01F2 /* MoviesInnTests.swift */,
-				32E242622AACA15600EB4AAF /* MovieListTestCases.swift */,
+				32E242622AACA15600EB4AAF /* MovieInnTestCases.swift */,
 			);
 			path = MoviesInnTests;
 			sourceTree = "<group>";
@@ -627,7 +627,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32E242632AACA15700EB4AAF /* MovieListTestCases.swift in Sources */,
+				32E242632AACA15700EB4AAF /* MovieInnTestCases.swift in Sources */,
 				841E7F282AA991DA00AA01F2 /* MoviesInnTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -860,6 +860,11 @@
 			baseConfigurationReference = F8A8ABA878BCD1B4CAD7C361 /* Pods-MoviesInnTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					x86_64,
+					i386,
+				);
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -881,6 +886,11 @@
 			baseConfigurationReference = 2BB3ACF4FB5694497C98B115 /* Pods-MoviesInnTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					x86_64,
+					i386,
+				);
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
