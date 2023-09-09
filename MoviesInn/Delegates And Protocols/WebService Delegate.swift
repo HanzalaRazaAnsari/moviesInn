@@ -13,4 +13,5 @@ public protocol WebServiceDelegate {
     func hideLoader(completed: @escaping ()->Void)
     func showMessage(message: String, isSuccess: Bool)
     func showMessage(message: String, isSuccess: Bool, completion: @escaping ()->Void)
+    func showMessageWithNoInternet(completion: @escaping ()->Void)
 }

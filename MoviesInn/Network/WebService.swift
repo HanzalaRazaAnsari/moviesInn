@@ -33,107 +33,9 @@ public class WebServiceManager: NSObject{
         loaderVC.defaultMaskType = .black
         session = Session()
 //        session = Session(serverTrustManager: ServerTrustManager(evaluators: evaluators))
-        session.sessionConfiguration.timeoutIntervalForRequest = 1000
-        session.sessionConfiguration.timeoutIntervalForResource = 1000
+        session.sessionConfiguration.timeoutIntervalForRequest = 20
+        session.sessionConfiguration.timeoutIntervalForResource = 20
     }
-    
-    
-//    public func request<T: Decodable>(url: URLConvertible, httpMethod: HTTPMethod, parameters: [String: Any]?, headers: HTTPHeaders? = nil, encoding: ParameterEncoding? = JSONEncoding.default, shouldRefreshToken: Bool = true, shouldShowLoader: Bool = true, isNotSSl: Bool = false, completion: @escaping ((T?, Error?, Int?) -> Void)){
-//            guard Reachability.isConnectedToNetwork() else {
-//                self.delegate?.showMessage(message: "No Internet Connection", isSuccess: false)
-//                return
-//            }
-//        if shouldShowLoader && !SVProgressHUD.isVisible() && !self.isNetworkCallInProgress{
-//            self.delegate?.showLoader(message: "Loading...")
-//        }
-//            var head: HTTPHeaders?
-//            if headers == nil{
-//                head = ["Authorization": AppManager.sharedInstance.static_token]
-////                    }
-//                    print(head ?? "")
-//            }
-//            else{
-//                head = headers!
-//            }
-//        var encodingType: ParameterEncoding = encoding!
-//        if httpMethod == .get{
-//            encodingType = URLEncoding.default
-//        }
-//        self.isNetworkCallInProgress = true
-//
-//        var session = WebServiceManager.shared.session
-//        if isNotSSl == true{
-//            session = AF
-//        }
-//
-//        session.request(url, method: httpMethod, parameters: parameters, encoding: encodingType, headers: head).responseJSON { (response) in
-//
-//                if shouldShowLoader{
-//                    self.processResponse(url: url, httpMethod: httpMethod, parameters: parameters, shouldRefreshToken: shouldRefreshToken, response: response) { (resp: T?, error, statusCode) in
-//                        self.isNetworkCallInProgress = false
-//                        completion(resp, error, statusCode)
-//                        if !self.isNetworkCallInProgress{
-//                            DispatchQueue.main.async {
-//                                self.delegate?.hideLoader {
-//                                    print("loader hidden")
-//                                }
-//                            }
-//                        }
-//                    }
-//                } else {
-//                    self.processResponse(url: url, httpMethod: httpMethod, parameters: parameters, response: response) { (resp: T?, error, statusCode) in
-//                        self.isNetworkCallInProgress = false
-//                        completion(resp, error, statusCode)
-//                        if !self.isNetworkCallInProgress{
-//                            DispatchQueue.main.async {
-//                                self.delegate?.hideLoader {
-//                                    print("loader hidden")
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//
-//
-//    private func processResponse<T: Decodable>(url: URLConvertible, httpMethod: HTTPMethod, parameters: [String: Any]?, shouldRefreshToken: Bool = true, response: AFDataResponse<Any>, completion: @escaping ((T?, Error?, Int?) -> Void)){
-//        if let resp = response.response{
-//            if resp.statusCode == 200 {
-//                guard let data = response.data else {
-//                    self.delegate.hideLoader {
-////                        self.delegate?.showMessage(message: "Data is null!", isSuccess: false)
-//                    }
-//                    completion(nil, nil, 200)
-//                    return
-//                }
-//                do{
-//                    let obj = try JSONDecoder().decode(T.self, from: data)
-//                    completion(obj, nil, 200)
-//                }
-//                catch{
-//                    print(error.localizedDescription)
-//                    self.delegate.hideLoader {
-//                    //MARK: Don't Remove
-////                       self.delegate?.showMessage(message: "Data is not in correct format!", isSuccess: false)
-//                    }
-//                    completion(nil, error, 200)
-//                }
-//            }
-//            else{
-//                completion(nil, response.error, resp.statusCode)
-//            }
-//     }
-//        else{
-//            if let delegate = self.delegate {
-//                delegate.hideLoader {
-//                    delegate.showMessage(message: "Request failed!!", isSuccess: false)
-//                }
-//            }
-//
-//            completion(nil, response.error, nil)
-//        }
-//    }
     
     // MARK: - Generic Request using Async-Await
     @MainActor
@@ -141,7 +43,9 @@ public class WebServiceManager: NSObject{
                             networkCallStatus: Bool,
                             message: String) {
         if shouldShowLoader && !SVProgressHUD.isVisible() && !networkCallStatus {
-            self.delegate?.showLoader(message: message)
+            DispatchQueue.main.async {
+                self.delegate?.showLoader(message: message)
+            }
         }
     }
     
@@ -197,7 +101,9 @@ public class WebServiceManager: NSObject{
         
         // Check If Network Is Available:
         guard Reachability.isConnectedToNetwork() else {
-            self.delegate?.showMessage(message: "No Internet Connection", isSuccess: false)
+            DispatchQueue.main.async {
+                self.delegate?.showMessage(message: "No Internet Connection", isSuccess: false)
+            }
             return .failure(.networkUnreachable)
         }
         

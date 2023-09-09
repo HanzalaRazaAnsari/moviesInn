@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YD1-Ef-92t">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YD1-Ef-92t">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,27 +14,244 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MoviesListViewController" customModule="MoviesInn" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qoP-ZW-rqZ">
+                                <rect key="frame" x="0.0" y="95" width="414" height="767"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="yoP-oO-4oN">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yoP-oO-4oN" id="hdL-fi-5Pw">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="hcg-oD-rYT"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="jhH-yf-ihg"/>
+                                </connections>
+                            </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="0gX-7L-aIG">
+                                <rect key="frame" x="0.0" y="44" width="414" height="51"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="g4l-e0-Wfe"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemPinkColor"/>
+                        <constraints>
+                            <constraint firstItem="qoP-ZW-rqZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="0FD-Sv-nqC"/>
+                            <constraint firstItem="0gX-7L-aIG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="A9X-t6-abm"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qoP-ZW-rqZ" secondAttribute="trailing" id="PyN-6q-SU9"/>
+                            <constraint firstItem="qoP-ZW-rqZ" firstAttribute="top" secondItem="0gX-7L-aIG" secondAttribute="bottom" id="UcZ-cX-nH9"/>
+                            <constraint firstItem="0gX-7L-aIG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="XB6-zz-WgY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="qoP-ZW-rqZ" secondAttribute="bottom" id="Zyq-Vc-4kM"/>
+                            <constraint firstItem="0gX-7L-aIG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="kpp-BJ-MkU"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="auM-qs-27t"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="moviesListTableView" destination="qoP-ZW-rqZ" id="bOI-bp-pxp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="869.46564885496184" y="-27.464788732394368"/>
         </scene>
+        <!--Specific Movie View Controller-->
+        <scene sceneID="bla-tV-gfW">
+            <objects>
+                <viewController storyboardIdentifier="SpecificMovieViewController" id="aXr-xf-bYc" customClass="SpecificMovieViewController" customModule="MoviesInn" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HJU-Eo-fyS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Oy-rD-FhL">
+                                <rect key="frame" x="0.0" y="44" width="414" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="NQO-js-cXh"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0mw-rs-sDe">
+                                <rect key="frame" x="10" y="254" width="54.5" height="25.5"/>
+                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="22"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oos-oC-RVj">
+                                <rect key="frame" x="74.5" y="254" width="319.5" height="0.0"/>
+                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="22"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K4b-IY-lEs">
+                                <rect key="frame" x="10" y="287" width="384" height="25.5"/>
+                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="22"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Fdw-0p-WEk">
+                                <rect key="frame" x="10" y="322.5" width="394" height="20"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="WFB-zJ-MNs">
+                                        <rect key="frame" x="0.0" y="0.0" width="139.5" height="20"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Vote Count:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ccw-ez-b3t">
+                                                <rect key="frame" x="0.0" y="0.0" width="79.5" height="20"/>
+                                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="15"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yDT-SU-Wg7">
+                                                <rect key="frame" x="89.5" y="0.0" width="50" height="20"/>
+                                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="15"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="iS7-ls-lj3">
+                                        <rect key="frame" x="159.5" y="0.0" width="234.5" height="20"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vote Average:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1oE-2l-bBx">
+                                                <rect key="frame" x="0.0" y="0.0" width="94.5" height="20"/>
+                                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="15"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdf-Ux-13z">
+                                                <rect key="frame" x="102.5" y="0.0" width="132" height="20"/>
+                                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="15"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="bJE-uw-ZIk"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rdt-RJ-A42">
+                                <rect key="frame" x="10" y="352.5" width="384" height="150"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="aTP-a4-2HH">
+                                        <rect key="frame" x="0.0" y="0.0" width="384" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Collection:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6HV-Q6-1jq">
+                                                <rect key="frame" x="0.0" y="0.0" width="73" height="30"/>
+                                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="15"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTl-rV-Jq2">
+                                                <rect key="frame" x="83" y="0.0" width="301" height="30"/>
+                                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="15"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="yJm-Ez-Rcs"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="iNC-Cc-cpD">
+                                        <rect key="frame" x="0.0" y="40" width="384" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Runtime:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pg-m7-Hyp">
+                                                <rect key="frame" x="0.0" y="0.0" width="63.5" height="30"/>
+                                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="15"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hql-WT-u3w">
+                                                <rect key="frame" x="73.5" y="0.0" width="310.5" height="30"/>
+                                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="15"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="4q4-XJ-HgS">
+                                        <rect key="frame" x="0.0" y="80" width="384" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Tagline:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1z-zr-hiI">
+                                                <rect key="frame" x="0.0" y="0.0" width="54.5" height="30"/>
+                                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="15"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0rA-v2-pKW">
+                                                <rect key="frame" x="64.5" y="0.0" width="319.5" height="30"/>
+                                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="15"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KYW-uA-qcE">
+                                        <rect key="frame" x="0.0" y="120" width="384" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Status:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwK-4I-0iK">
+                                                <rect key="frame" x="0.0" y="0.0" width="49" height="30"/>
+                                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="15"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ImU-cS-Pl0">
+                                                <rect key="frame" x="59" y="0.0" width="325" height="30"/>
+                                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="15"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="WAF-49-oOn"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="WAF-49-oOn" firstAttribute="trailing" secondItem="Oos-oC-RVj" secondAttribute="trailing" constant="20" id="2I5-H8-oTL"/>
+                            <constraint firstItem="Oos-oC-RVj" firstAttribute="leading" secondItem="0mw-rs-sDe" secondAttribute="trailing" constant="10" id="Ayz-y3-MDM"/>
+                            <constraint firstItem="K4b-IY-lEs" firstAttribute="leading" secondItem="0mw-rs-sDe" secondAttribute="leading" id="Bee-Ma-UZG"/>
+                            <constraint firstItem="Fdw-0p-WEk" firstAttribute="trailing" secondItem="WAF-49-oOn" secondAttribute="trailing" constant="-10" id="DNU-G3-SpQ"/>
+                            <constraint firstItem="WAF-49-oOn" firstAttribute="trailing" secondItem="7Oy-rD-FhL" secondAttribute="trailing" id="QDq-UT-4bd"/>
+                            <constraint firstItem="7Oy-rD-FhL" firstAttribute="top" secondItem="WAF-49-oOn" secondAttribute="top" id="cfR-pq-uGv"/>
+                            <constraint firstItem="7Oy-rD-FhL" firstAttribute="leading" secondItem="WAF-49-oOn" secondAttribute="leading" id="dqC-GF-B34"/>
+                            <constraint firstItem="rdt-RJ-A42" firstAttribute="leading" secondItem="Fdw-0p-WEk" secondAttribute="leading" id="gkA-UU-fCL"/>
+                            <constraint firstItem="0mw-rs-sDe" firstAttribute="leading" secondItem="WAF-49-oOn" secondAttribute="leading" constant="10" id="iZg-w2-Jd1"/>
+                            <constraint firstItem="WAF-49-oOn" firstAttribute="trailing" secondItem="K4b-IY-lEs" secondAttribute="trailing" constant="20" id="ilc-0G-gDr"/>
+                            <constraint firstItem="Oos-oC-RVj" firstAttribute="top" secondItem="0mw-rs-sDe" secondAttribute="top" id="mdt-qN-9SL"/>
+                            <constraint firstItem="0mw-rs-sDe" firstAttribute="top" secondItem="7Oy-rD-FhL" secondAttribute="bottom" constant="10" id="p8U-0I-3T8"/>
+                            <constraint firstItem="Fdw-0p-WEk" firstAttribute="leading" secondItem="WAF-49-oOn" secondAttribute="leading" constant="10" id="qVU-rj-DCJ"/>
+                            <constraint firstItem="WAF-49-oOn" firstAttribute="trailing" secondItem="rdt-RJ-A42" secondAttribute="trailing" constant="20" id="r1t-m6-4eJ"/>
+                            <constraint firstItem="Fdw-0p-WEk" firstAttribute="top" secondItem="K4b-IY-lEs" secondAttribute="bottom" constant="10" id="rom-gA-WUD"/>
+                            <constraint firstItem="K4b-IY-lEs" firstAttribute="top" secondItem="0mw-rs-sDe" secondAttribute="bottom" constant="7.5" id="sjB-2H-M48"/>
+                            <constraint firstItem="rdt-RJ-A42" firstAttribute="top" secondItem="Fdw-0p-WEk" secondAttribute="bottom" constant="10" id="wr6-LA-WoL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="movieCollection" destination="dTl-rV-Jq2" id="ia8-rf-eYL"/>
+                        <outlet property="movieDescription" destination="K4b-IY-lEs" id="tDH-PH-eQf"/>
+                        <outlet property="movieImageView" destination="7Oy-rD-FhL" id="T7w-j3-Er4"/>
+                        <outlet property="movieName" destination="Oos-oC-RVj" id="FHg-OK-Sdz"/>
+                        <outlet property="movieRuntime" destination="hql-WT-u3w" id="rA8-se-Zw0"/>
+                        <outlet property="movieStatus" destination="ImU-cS-Pl0" id="AhK-7d-KRb"/>
+                        <outlet property="movieTagline" destination="0rA-v2-pKW" id="4f7-Th-W2Q"/>
+                        <outlet property="movieVoteAverage" destination="bdf-Ux-13z" id="c61-2M-7jz"/>
+                        <outlet property="movieVoteCount" destination="yDT-SU-Wg7" id="4ol-Cu-3S2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gzt-xD-8YG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1636.2318840579712" y="-26.116071428571427"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="aK5-1Z-SXG">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="YD1-Ef-92t" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" interfaceStyle="light" navigationBarHidden="YES" id="YD1-Ef-92t" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mN4-8e-t5f">
                         <autoresizingMask key="autoresizingMask"/>
                         <navigationBarAppearance key="standardAppearance" backgroundEffect="systemMaterial"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OfO-Lp-2iQ">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="qzT-cG-Ar4"/>
                     </connections>
@@ -45,8 +262,8 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

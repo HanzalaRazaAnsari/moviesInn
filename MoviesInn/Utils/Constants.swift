@@ -45,7 +45,7 @@ enum Enviroment {
     func domain() -> String {
         switch self {
         case .DEVELOPMENT , .PRODUCTION:
-            return "//api.themoviedb.org"
+            return "api.themoviedb.org"
         }
     }
     
@@ -66,6 +66,7 @@ public enum Routes {
     
     // Routes:
     case MOVIES
+    case CONFIGURATION
     
     func getRoute(enviroment: Enviroment) -> String {
         switch enviroment {
@@ -73,6 +74,8 @@ public enum Routes {
             switch self {
             case .MOVIES :
                 return "/3/movie"
+            case .CONFIGURATION :
+                return "/3/configuration"
             }
         }
     }
@@ -92,6 +95,7 @@ public enum UseCase {
             return "/popular"
         case .SPECIFIC_MOVIE(let id):
             return "/\(id)"
+        
         }
     }
 }

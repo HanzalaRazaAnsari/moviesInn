@@ -21,31 +21,31 @@ open class BaseViewController: UIViewController, UITextFieldDelegate, WebService
     
     open override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.setStatusBar(backgroundColor: ThemeManager.shared.theme.primaryColour)
-        //        self.navigationController?.navigationBar.setNeedsLayout()
-        
-        //Removing back button title
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
-        let logoImage = UIImage.init(named: "tokriLogoNavImage")
-        let logoImageView = UIImageView.init(image: logoImage)
-        //logoImageView.frame = CGRect(x:0.0,y:0.0, width:60,height:25.0)
-        logoImageView.frame = CGRect(x:0.0,y:0.0, width:60,height:25.0)
-        logoImageView.contentMode = .scaleAspectFit
-        let imageItem = UIBarButtonItem.init(customView: logoImageView)
-        let widthConstraint = logoImageView.widthAnchor.constraint(equalToConstant: 80)
-        let heightConstraint = logoImageView.heightAnchor.constraint(equalToConstant: 35)
-        heightConstraint.isActive = true
-        widthConstraint.isActive = true
-        navigationItem.rightBarButtonItem =  imageItem
+//        self.navigationController?.setStatusBar(backgroundColor: ThemeManager.shared.theme.primaryColour)
+//        //        self.navigationController?.navigationBar.setNeedsLayout()
+//
+//        //Removing back button title
+//        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
+//        let logoImage = UIImage.init(named: "tokriLogoNavImage")
+//        let logoImageView = UIImageView.init(image: logoImage)
+//        //logoImageView.frame = CGRect(x:0.0,y:0.0, width:60,height:25.0)
+//        logoImageView.frame = CGRect(x:0.0,y:0.0, width:60,height:25.0)
+//        logoImageView.contentMode = .scaleAspectFit
+//        let imageItem = UIBarButtonItem.init(customView: logoImageView)
+//        let widthConstraint = logoImageView.widthAnchor.constraint(equalToConstant: 80)
+//        let heightConstraint = logoImageView.heightAnchor.constraint(equalToConstant: 35)
+//        heightConstraint.isActive = true
+//        widthConstraint.isActive = true
+//        navigationItem.rightBarButtonItem =  imageItem
         
         // Do any additional setup after loading the view.
-        self.scrollView?.keyboardDismissMode = .interactive
-        
-        if scrollView != nil{
-            self.tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
-        }
-        self.view.backgroundColor = .darkGray
-        self.scrollView?.viewWithTag(100)?.backgroundColor = .lightGray
+//        self.scrollView?.keyboardDismissMode = .interactive
+//        
+//        if scrollView != nil{
+//            self.tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+//        }
+////        self.view.backgroundColor = .darkGray
+//        self.scrollView?.viewWithTag(100)?.backgroundColor = .lightGray
     }
     
     open func roundView(view:UIView){
@@ -109,7 +109,7 @@ open class BaseViewController: UIViewController, UITextFieldDelegate, WebService
         }
     }
     
-    open func showAlert(title: String?, message: String?, completion: @escaping ()->()){
+    open func showAlertWithButton(title: String?, message: String?, completion: @escaping ()->()){
         let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action) in
             completion()
@@ -238,6 +238,12 @@ open class BaseViewController: UIViewController, UITextFieldDelegate, WebService
     open func showMessage(message: String, isSuccess: Bool, completion: @escaping ()->Void){
         self.showAlert(title: isSuccess ? "Success!": "Alert!", message: message)
     }
+    
+    open func showMessageWithNoInternet(completion: @escaping ()->Void){
+        self.showAlertWithButton(title: "No Internet", message: " Press Ok to see the most recently viewed movie", completion: completion)
+    }
+    
+    
     
     
     public func cleanup() {

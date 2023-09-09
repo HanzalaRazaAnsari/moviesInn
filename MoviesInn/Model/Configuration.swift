@@ -10,15 +10,15 @@ import Foundation
 
 
 public class Configuration: Codable {
-    public var images: Images?
-    public var changeKeys: [String]?
+    var images: Images?
+    var changeKeys: [String]?
 
     enum CodingKeys: String, CodingKey {
         case images
-        case changeKeys
+        case changeKeys = "change_keys"
     }
 
-    public init(images: Images?, changeKeys: [String]?) {
+    init(images: Images?, changeKeys: [String]?) {
         self.images = images
         self.changeKeys = changeKeys
     }
@@ -26,25 +26,22 @@ public class Configuration: Codable {
 
 // MARK: - Images
 public class Images: Codable {
-    public var baseURL: String?
-    public var secureBaseURL: String?
-    public var backdropSizes: [String]?
-    public var logoSizes: [String]?
-    public var posterSizes: [String]?
-    public var profileSizes: [String]?
-    public var stillSizes: [String]?
+    var baseURL: String?
+    var secureBaseURL: String?
+    var backdropSizes, logoSizes, posterSizes, profileSizes: [String]?
+    var stillSizes: [String]?
 
     enum CodingKeys: String, CodingKey {
-        case baseURL
-        case secureBaseURL
-        case backdropSizes
-        case logoSizes
-        case posterSizes
-        case profileSizes
-        case stillSizes
+        case baseURL = "base_url"
+        case secureBaseURL = "secure_base_url"
+        case backdropSizes = "backdrop_sizes"
+        case logoSizes = "logo_sizes"
+        case posterSizes = "poster_sizes"
+        case profileSizes = "profile_sizes"
+        case stillSizes = "still_sizes"
     }
 
-    public init(baseURL: String?, secureBaseURL: String?, backdropSizes: [String]?, logoSizes: [String]?, posterSizes: [String]?, profileSizes: [String]?, stillSizes: [String]?) {
+    init(baseURL: String?, secureBaseURL: String?, backdropSizes: [String]?, logoSizes: [String]?, posterSizes: [String]?, profileSizes: [String]?, stillSizes: [String]?) {
         self.baseURL = baseURL
         self.secureBaseURL = secureBaseURL
         self.backdropSizes = backdropSizes

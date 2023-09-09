@@ -7,20 +7,24 @@
 
 import Foundation
 
+// This file was generated from JSON Schema using quicktype, do not modify it directly.
+// To parse the JSON, add this file to your project and do:
+//
+//   let allMovies = try? JSONDecoder().decode(AllMovies.self, from: jsonData)
+
+// MARK: - AllMovies
 public class AllMovies: Codable {
-    public var page: Int?
-    public var results: [ResultClass]?
-    public var totalPages: Int?
-    public var totalResults: Int?
+    var page: Int?
+    var results: [ResultClass]?
+    var totalPages, totalResults: Int?
 
     enum CodingKeys: String, CodingKey {
-        case page
-        case results
-        case totalPages
-        case totalResults
+        case page, results
+        case totalPages = "total_pages"
+        case totalResults = "total_results"
     }
 
-    public init(page: Int?, results: [ResultClass]?, totalPages: Int?, totalResults: Int?) {
+    init(page: Int?, results: [ResultClass]?, totalPages: Int?, totalResults: Int?) {
         self.page = page
         self.results = results
         self.totalPages = totalPages
@@ -29,40 +33,35 @@ public class AllMovies: Codable {
 }
 
 // MARK: - Result
-public class ResultClass: Codable {
-    public var adult: Bool?
-    public var backdropPath: String?
-    public var genreIDS: [Int]?
-    public var id: Int?
-    public var originalLanguage: String?
-    public var originalTitle: String?
-    public var overview: String?
-    public var popularity: Double?
-    public var posterPath: String?
-    public var releaseDate: String?
-    public var title: String?
-    public var video: Bool?
-    public var voteAverage: Double?
-    public var voteCount: Int?
+class ResultClass: Codable {
+    var adult: Bool?
+    var backdropPath: String?
+    var genreIDS: [Int]?
+    var id: Int?
+    var originalLanguage: OriginalLanguage?
+    var originalTitle, overview: String?
+    var popularity: Double?
+    var posterPath, releaseDate, title: String?
+    var video: Bool?
+    var voteAverage: Double?
+    var voteCount: Int?
 
     enum CodingKeys: String, CodingKey {
         case adult
-        case backdropPath
-        case genreIDS
+        case backdropPath = "backdrop_path"
+        case genreIDS = "genre_ids"
         case id
-        case originalLanguage
-        case originalTitle
-        case overview
-        case popularity
-        case posterPath
-        case releaseDate
-        case title
-        case video
-        case voteAverage
-        case voteCount
+        case originalLanguage = "original_language"
+        case originalTitle = "original_title"
+        case overview, popularity
+        case posterPath = "poster_path"
+        case releaseDate = "release_date"
+        case title, video
+        case voteAverage = "vote_average"
+        case voteCount = "vote_count"
     }
 
-    public init(adult: Bool?, backdropPath: String?, genreIDS: [Int]?, id: Int?, originalLanguage: String?, originalTitle: String?, overview: String?, popularity: Double?, posterPath: String?, releaseDate: String?, title: String?, video: Bool?, voteAverage: Double?, voteCount: Int?) {
+    init(adult: Bool?, backdropPath: String?, genreIDS: [Int]?, id: Int?, originalLanguage: OriginalLanguage?, originalTitle: String?, overview: String?, popularity: Double?, posterPath: String?, releaseDate: String?, title: String?, video: Bool?, voteAverage: Double?, voteCount: Int?) {
         self.adult = adult
         self.backdropPath = backdropPath
         self.genreIDS = genreIDS
@@ -79,3 +78,11 @@ public class ResultClass: Codable {
         self.voteCount = voteCount
     }
 }
+
+enum OriginalLanguage: String, Codable {
+    case en = "en"
+    case hi = "hi"
+    case nl = "nl"
+    case yo = "yo"
+}
+

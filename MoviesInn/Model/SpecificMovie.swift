@@ -1,69 +1,45 @@
-//
-//  SpecificMovie.swift
-//  MoviesInn
-//
-//  Created by Admin on 07/09/2023.
-//
-
-import Foundation
-
-
 public class SpecificMovie: Codable {
-    public var adult: Bool?
-    public var backdropPath: String?
-    public var belongsToCollection: BelongsToCollection?
-    public var budget: Int?
-    public var genres: [Genre]?
-    public var homepage: String?
-    public var id: Int?
-    public var imdbID: String?
-    public var originalLanguage: String?
-    public var originalTitle: String?
-    public var overview: String?
-    public var popularity: Double?
-    public var posterPath: String?
-    public var productionCompanies: [ProductionCompany]?
-    public var productionCountries: [ProductionCountry]?
-    public var releaseDate: String?
-    public var revenue: Int?
-    public var runtime: Int?
-    public var spokenLanguages: [SpokenLanguage]?
-    public var status: String?
-    public var tagline: String?
-    public var title: String?
-    public var video: Bool?
-    public var voteAverage: Double?
-    public var voteCount: Int?
+    var adult: Bool?
+    var backdropPath: String?
+    var belongsToCollection: BelongsToCollection?
+    var budget: Int?
+    var genres: [Genre]?
+    var homepage: String?
+    var id: Int?
+    var imdbID, originalLanguage, originalTitle, overview: String?
+    var popularity: Double?
+    var posterPath: String?
+    var productionCompanies: [ProductionCompany]?
+    var productionCountries: [ProductionCountry]?
+    var releaseDate: String?
+    var revenue, runtime: Int?
+    var spokenLanguages: [SpokenLanguage]?
+    var status, tagline, title: String?
+    var video: Bool?
+    var voteAverage: Double?
+    var voteCount: Int?
 
     enum CodingKeys: String, CodingKey {
         case adult
-        case backdropPath
-        case belongsToCollection
-        case budget
-        case genres
-        case homepage
-        case id
-        case imdbID
-        case originalLanguage
-        case originalTitle
-        case overview
-        case popularity
-        case posterPath
-        case productionCompanies
-        case productionCountries
-        case releaseDate
-        case revenue
-        case runtime
-        case spokenLanguages
-        case status
-        case tagline
-        case title
-        case video
-        case voteAverage
-        case voteCount
+        case backdropPath = "backdrop_path"
+        case belongsToCollection = "belongs_to_collection"
+        case budget, genres, homepage, id
+        case imdbID = "imdb_id"
+        case originalLanguage = "original_language"
+        case originalTitle = "original_title"
+        case overview, popularity
+        case posterPath = "poster_path"
+        case productionCompanies = "production_companies"
+        case productionCountries = "production_countries"
+        case releaseDate = "release_date"
+        case revenue, runtime
+        case spokenLanguages = "spoken_languages"
+        case status, tagline, title, video
+        case voteAverage = "vote_average"
+        case voteCount = "vote_count"
     }
 
-    public init(adult: Bool?, backdropPath: String?, belongsToCollection: BelongsToCollection?, budget: Int?, genres: [Genre]?, homepage: String?, id: Int?, imdbID: String?, originalLanguage: String?, originalTitle: String?, overview: String?, popularity: Double?, posterPath: String?, productionCompanies: [ProductionCompany]?, productionCountries: [ProductionCountry]?, releaseDate: String?, revenue: Int?, runtime: Int?, spokenLanguages: [SpokenLanguage]?, status: String?, tagline: String?, title: String?, video: Bool?, voteAverage: Double?, voteCount: Int?) {
+    init(adult: Bool?, backdropPath: String?, belongsToCollection: BelongsToCollection?, budget: Int?, genres: [Genre]?, homepage: String?, id: Int?, imdbID: String?, originalLanguage: String?, originalTitle: String?, overview: String?, popularity: Double?, posterPath: String?, productionCompanies: [ProductionCompany]?, productionCountries: [ProductionCountry]?, releaseDate: String?, revenue: Int?, runtime: Int?, spokenLanguages: [SpokenLanguage]?, status: String?, tagline: String?, title: String?, video: Bool?, voteAverage: Double?, voteCount: Int?) {
         self.adult = adult
         self.backdropPath = backdropPath
         self.belongsToCollection = belongsToCollection
@@ -94,19 +70,16 @@ public class SpecificMovie: Codable {
 
 // MARK: - BelongsToCollection
 public class BelongsToCollection: Codable {
-    public var id: Int?
-    public var name: String?
-    public var posterPath: String?
-    public var backdropPath: String?
+    var id: Int?
+    var name, posterPath, backdropPath: String?
 
     enum CodingKeys: String, CodingKey {
-        case id
-        case name
-        case posterPath
-        case backdropPath
+        case id, name
+        case posterPath = "poster_path"
+        case backdropPath = "backdrop_path"
     }
 
-    public init(id: Int?, name: String?, posterPath: String?, backdropPath: String?) {
+    init(id: Int?, name: String?, posterPath: String?, backdropPath: String?) {
         self.id = id
         self.name = name
         self.posterPath = posterPath
@@ -116,15 +89,10 @@ public class BelongsToCollection: Codable {
 
 // MARK: - Genre
 public class Genre: Codable {
-    public var id: Int?
-    public var name: String?
+    var id: Int?
+    var name: String?
 
-    enum CodingKeys: String, CodingKey {
-        case id
-        case name
-    }
-
-    public init(id: Int?, name: String?) {
+    init(id: Int?, name: String?) {
         self.id = id
         self.name = name
     }
@@ -132,19 +100,18 @@ public class Genre: Codable {
 
 // MARK: - ProductionCompany
 public class ProductionCompany: Codable {
-    public var id: Int?
-    public var logoPath: String?
-    public var name: String?
-    public var originCountry: String?
+    var id: Int?
+    var logoPath: String?
+    var name, originCountry: String?
 
     enum CodingKeys: String, CodingKey {
         case id
-        case logoPath
+        case logoPath = "logo_path"
         case name
-        case originCountry
+        case originCountry = "origin_country"
     }
 
-    public init(id: Int?, logoPath: String?, name: String?, originCountry: String?) {
+    init(id: Int?, logoPath: String?, name: String?, originCountry: String?) {
         self.id = id
         self.logoPath = logoPath
         self.name = name
@@ -154,33 +121,30 @@ public class ProductionCompany: Codable {
 
 // MARK: - ProductionCountry
 public class ProductionCountry: Codable {
-    public var iso3166_1: String?
-    public var name: String?
+    var iso3166_1, name: String?
 
     enum CodingKeys: String, CodingKey {
-        case iso3166_1
+        case iso3166_1 = "iso_3166_1"
         case name
     }
 
-    public init(iso3166_1: String?, name: String?) {
+    init(iso3166_1: String?, name: String?) {
         self.iso3166_1 = iso3166_1
         self.name = name
     }
 }
 
 // MARK: - SpokenLanguage
-public class SpokenLanguage: Codable {
-    public var englishName: String?
-    public var iso639_1: String?
-    public var name: String?
+class SpokenLanguage: Codable {
+    var englishName, iso639_1, name: String?
 
     enum CodingKeys: String, CodingKey {
-        case englishName
-        case iso639_1
+        case englishName = "english_name"
+        case iso639_1 = "iso_639_1"
         case name
     }
 
-    public init(englishName: String?, iso639_1: String?, name: String?) {
+    init(englishName: String?, iso639_1: String?, name: String?) {
         self.englishName = englishName
         self.iso639_1 = iso639_1
         self.name = name
